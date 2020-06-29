@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmls:th="www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello</title>
+</head>
+<body>
+
+<h2>World.</h2>
+<p th:inline="text">Hello [[${name}]]. Nice to see you today.</p>
+<p th:inline="text">Current time is [[${time}]].</p>
+</body>
+</html>
