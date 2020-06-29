@@ -1,5 +1,6 @@
 package com.example.assig1;
 
+import java.sql.Timestamp;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class Hello { //localhost:8080/hello?name=andrew
 
   @Autowired
-  PersonRepository personRepository;
+  MovieRepository movieRepository;
 
   @GetMapping(value="/hello")
   public String hello(@RequestParam("name") String name, Model model) {
@@ -25,27 +26,29 @@ public class Hello { //localhost:8080/hello?name=andrew
     return "index";
   }
 
-  @GetMapping("/person/new")
-  public String createPerson(Model model) {
-    Person person = new Person();
-    model.addAttribute("person", person);
-    return "person_form";
+  @GetMapping("/movies/new")
+  public String createMovie(Model model) {
+    Movie movie = new Movie();
+    model.addAttribute("movie", movie);
+    return "movie_form";
   }
 
-  @PostMapping(value="/person")
-  public String processPersonForm(@Valid Person person, BindingResult result, Model model) {
+  @PostMapping(value="/movies/new")
+  public String processMovieForm(@Valid Movie movie, BindingResult result, Model model) {
     if(result.hasErrors()) {
-      return "person_form";
+      return "movie_form";
     }
-    personRepository.save(person);
-    return "person_show";
+    //probably a more automatic way of doing this but this works
+    movie.setDate(new Timestamp(System.currentTimeMillis()));
+    movieRepository.save(movie);
+    return "movies_show";
   }
 
-  @GetMapping(value="/person")
-  public String getAllPeople(Model model) {
-    Iterable<Person> people = personRepository.findAll();
-    model.addAttribute("persons", people);
-    return "person_list";
+  @GetMapping(value="/movies")
+  public String getAllMovies(Model model) {
+    Iterable<Movie> movie = movieRepository.findAllMovieRatingsOrderByTitleDateDesc();
+    model.addAttribute("movies", movie);
+    return "movies_list";
   }
 
 
