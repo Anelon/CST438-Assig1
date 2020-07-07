@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h2>Hello World.</h2>
+<h2>Rate a Movie</h2>
 <form action="#" th:action="@{/movies/new}" th:object="${movie}" method="post">
   Title: <input type="text" th:field="*{title}" />
   <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"> </span> <br />
