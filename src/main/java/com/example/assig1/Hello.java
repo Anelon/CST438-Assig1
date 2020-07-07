@@ -9,9 +9,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 @Controller
-public class Movies { //localhost:8080/hello?name=andrew
+public class Hello { //localhost:8080/hello?name=andrew
 
   @Autowired
   MovieRepository movieRepository;
