@@ -1,20 +1,14 @@
 package com.example.assig1;
 
-import com.sun.istack.internal.NotNull;
-import java.sql.Time;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.text.SimpleDateFormat;
-import sun.java2d.pipe.SpanShapeRenderer.Simple;
 
 @Entity
 public class Movie {
